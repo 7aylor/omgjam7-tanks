@@ -1,34 +1,22 @@
 fileFormatVersion: 2
-guid: 12e8321a3cc361b4f9f1ed68b2821550
+guid: 69d49b06bd8c6bb4eaf6efa3534d161d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5483141480712199982
-    second: virus_spawner_0
+      213: 2238288353401284244
+    second: virus_b_spawner_0
   - first:
-      213: 1776572142484058517
-    second: virus_spawner_1
+      213: -1507323179961783071
+    second: virus_b_spawner_1
   - first:
-      213: -4178506282775300350
-    second: virus_spawner_2
+      213: 9118208078298084524
+    second: virus_b_spawner_2
   - first:
-      213: 8896439852145461703
-    second: virus_spawner_3
+      213: -1663572838352230368
+    second: virus_b_spawner_3
   - first:
-      213: -7442838033386583838
-    second: virus_spawner_0
-  - first:
-      213: 1186356484303690466
-    second: virus_spawner_1
-  - first:
-      213: -2693364469444438440
-    second: virus_spawner_2
-  - first:
-      213: -5316667494068415798
-    second: virus_spawner_3
-  - first:
-      213: 6124300023196321268
-    second: virus_spawner_4
+      213: -3619362111235187553
+    second: virus_b_spawner_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -161,7 +149,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: virus_spawner_0
+      name: virus_b_spawner_0
       rect:
         serializedVersion: 2
         x: 0
@@ -175,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e8c9331e3ab5b890800000000000000
-      internalID: -7442838033386583838
+      spriteID: 496a061066fff0f10800000000000000
+      internalID: 2238288353401284244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: virus_spawner_1
+      name: virus_b_spawner_1
       rect:
         serializedVersion: 2
         x: 16
@@ -196,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ea17e7dfe8c67010800000000000000
-      internalID: 1186356484303690466
+      spriteID: 1ec6aa0dd89e41be0800000000000000
+      internalID: -1507323179961783071
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: virus_spawner_2
+      name: virus_b_spawner_2
       rect:
         serializedVersion: 2
         x: 32
@@ -217,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8561b1cf84f3f9ad0800000000000000
-      internalID: -2693364469444438440
+      spriteID: ca4fd07dfe16a8e70800000000000000
+      internalID: 9118208078298084524
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: virus_spawner_3
+      name: virus_b_spawner_3
       rect:
         serializedVersion: 2
         x: 48
@@ -238,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac29f2345176736b0800000000000000
-      internalID: -5316667494068415798
+      spriteID: 028e608415dc9e8e0800000000000000
+      internalID: -1663572838352230368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: virus_spawner_4
+      name: virus_b_spawner_4
       rect:
         serializedVersion: 2
         x: 64
@@ -259,8 +247,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f588845c62edf450800000000000000
-      internalID: 6124300023196321268
+      spriteID: f9c9156065175cdc0800000000000000
+      internalID: -3619362111235187553
       vertices: []
       indices: 
       edges: []

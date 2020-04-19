@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Projectile[] projectiles;
 
+    VirusSpawner[] spawners;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,13 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void MoveAllObjects()
+    public void PlayerActionTaken()
+    {
+        MoveAllObjects();
+        SpawnViruses();
+    }
+
+    private void MoveAllObjects()
     {
         enemies = FindObjectsOfType<Enemy>();
         projectiles = FindObjectsOfType<Projectile>();
@@ -35,6 +43,16 @@ public class GameManager : MonoBehaviour
         foreach(Projectile projectile in projectiles)
         {
             projectile.Move();
+        }
+    }
+
+    private void SpawnViruses()
+    {
+        spawners = FindObjectsOfType<VirusSpawner>();
+
+        foreach(VirusSpawner spawner in spawners)
+        {
+            spawner.DecideToSpawnVirus();
         }
     }
 }

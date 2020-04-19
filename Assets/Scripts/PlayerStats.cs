@@ -6,6 +6,12 @@ public class PlayerStats : MonoBehaviour
 {
     [SerializeField]
     int health = 3;
+    Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     /// <summary>
     /// Called from object giving damage. Kills player if health less than or equal to 0
@@ -16,7 +22,12 @@ public class PlayerStats : MonoBehaviour
         health -= damage;
         if(health <= 0)
         {
-            Destroy(gameObject);
+            animator.SetTrigger("Death");
         }
+    }
+
+    public void KillPlayer()
+    {
+        Destroy(gameObject);
     }
 }

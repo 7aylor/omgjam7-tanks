@@ -12,6 +12,10 @@ public class Tank : MonoBehaviour
     GameObject turret;
 
     [SerializeField]
+    GameObject arrow;
+    bool arrowActive = false;
+
+    [SerializeField]
     float timeToRotationTurret = 0.25f;
 
     [SerializeField]
@@ -54,13 +58,23 @@ public class Tank : MonoBehaviour
             RotateTurret();
             Attack();
         }
+        EnableDirectionArrow();
+    }
+
+    private void EnableDirectionArrow()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            arrowActive = !arrowActive;
+            arrow.SetActive(arrowActive);
+        }
     }
 
     private void Attack()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            gameManager.MoveAllObjects();
+            gameManager.PlayerActionTaken();
             //hasFired = true;
             projectile.enabled = true;
             projectile.GetComponent<Projectile>().Direction = DirectionTurretIsFacing;
@@ -156,7 +170,7 @@ public class Tank : MonoBehaviour
     public IEnumerator MoveBodyCoroutine(Vector2 newPosition, Vector2 direction)
     {
         isMoving = true;
-        gameManager.MoveAllObjects();
+        gameManager.PlayerActionTaken();
 
         Vector2 startPosition = transform.position;
         bool wasCollision = false;

@@ -6,8 +6,12 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: virus_b_Override
+  m_Name: virus_b_override
   m_Controller: {fileID: 9100000, guid: 5af18e2151436634db0a8bad24e2da23, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: f1d9d53f9c794c9419c3580ff5ec688f, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 8a8397f7e60649b4eb875900bb9d6f3c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3cafa7dec73b9b442af52b791cde61b3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1509d81a96f83994884c43f924603485, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d43bc4fb4f7d7fa40b8b94ce8b3bb710, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 85399ddc7009330409b7818f02e726d3, type: 2}

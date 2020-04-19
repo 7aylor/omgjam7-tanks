@@ -31,7 +31,6 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collision detected");
         PlayerStats otherPlayerStats = collision.gameObject.GetComponent<PlayerStats>();
 
         if(otherPlayerStats != null && collision.tag != "Player")

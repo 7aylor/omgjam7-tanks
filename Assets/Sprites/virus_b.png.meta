@@ -8,6 +8,66 @@ TextureImporter:
   - first:
       213: -3465815602468464923
     second: virus_b_1
+  - first:
+      213: -5208998273245534904
+    second: virus_b_0
+  - first:
+      213: 4891735048238616372
+    second: virus_b_1
+  - first:
+      213: -6845500825835435042
+    second: virus_b_2
+  - first:
+      213: -3291879958874937385
+    second: virus_b_3
+  - first:
+      213: 6184030175903649063
+    second: virus_b_4
+  - first:
+      213: 7534109557757518187
+    second: virus_b_5
+  - first:
+      213: 8833734759326018834
+    second: virus_b_6
+  - first:
+      213: -8083720444078080418
+    second: virus_b_7
+  - first:
+      213: -8003913277167956147
+    second: virus_b_8
+  - first:
+      213: -1938707020124324279
+    second: virus_b_9
+  - first:
+      213: 4647380806524085405
+    second: virus_b_2
+  - first:
+      213: -3954759078183578958
+    second: virus_b_3
+  - first:
+      213: 921488599391092925
+    second: virus_b_4
+  - first:
+      213: 2526406097171285598
+    second: virus_b_5
+  - first:
+      213: 2875551679673593852
+    second: virus_b_6
+  - first:
+      213: 1575613414872507787
+    second: virus_b_7
+  - first:
+      213: 7181237500923543931
+    second: virus_b_8
+  - first:
+      213: 4037043824977601850
+    second: virus_b_10
+  - first:
+      213: -7035165468755986907
+    second: virus_b_11
+  - first:
+      213: 7623546175042512562
+    second: virus_b_12
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -144,6 +204,174 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 845a39f3babe5b7b0800000000000000
+      internalID: -5208998273245534904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus_b_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43f479ddb1fe2e340800000000000000
+      internalID: 4891735048238616372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus_b_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9426dc7830de7040800000000000000
+      internalID: 4647380806524085405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus_b_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b2dd94529fdd19c0800000000000000
+      internalID: -3954759078183578958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus_b_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db04747bff8c9cc00800000000000000
+      internalID: 921488599391092925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus_b_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e56864cb5f89f0320800000000000000
+      internalID: 2526406097171285598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus_b_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cffe830740308e720800000000000000
+      internalID: 2875551679673593852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus_b_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b85e0d88d04bdd510800000000000000
+      internalID: 1575613414872507787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus_b_8
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 16
         height: 16
@@ -154,14 +382,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6e8697a39cf11d60800000000000000
-      internalID: 7859340535840280174
+      spriteID: b7103429571e8a360800000000000000
+      internalID: 7181237500923543931
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: virus_b_1
+      name: virus_b_9
       rect:
         serializedVersion: 2
         x: 16
@@ -175,8 +403,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e65cdd7213f6efc0800000000000000
-      internalID: -3465815602468464923
+      spriteID: 94efee5ac345815e0800000000000000
+      internalID: -1938707020124324279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus_b_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a35697a38f5760830800000000000000
+      internalID: 4037043824977601850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus_b_11
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52674b2b7421e5e90800000000000000
+      internalID: -7035165468755986907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus_b_12
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b6623cdad64cc960800000000000000
+      internalID: 7623546175042512562
       vertices: []
       indices: 
       edges: []

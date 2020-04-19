@@ -18,7 +18,7 @@ TagManager:
   - Projectiles
   - Players
   - Walls
-  - 
+  - Spawner
   - 
   - 
   - 
@@ -44,8 +44,8 @@ TagManager:
   - name: Ground
     uniqueID: 2366608449
     locked: 0
-  - name: Projectiles
-    uniqueID: 431582713
+  - name: Spawner
+    uniqueID: 285169537
     locked: 0
   - name: Players
     uniqueID: 498362359
@@ -55,4 +55,7 @@ TagManager:
     locked: 0
   - name: Walls
     uniqueID: 2313102095
+    locked: 0
+  - name: Projectiles
+    uniqueID: 431582713
     locked: 0
