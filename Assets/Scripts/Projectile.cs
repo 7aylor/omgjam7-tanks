@@ -75,13 +75,23 @@ public class Projectile : MonoBehaviour
 
     private IEnumerator MoveProjectileCoroutine()
     {
+        Vector2 startPosition = transform.position;
         Vector2 newPosition = (Vector2)transform.position + Direction;
 
         //Rotate body and turrent if needed
         //play sound
-        while (Vector2.Distance(transform.position, newPosition) > 0.05f)
+        //while (Vector2.Distance(transform.position, newPosition) > 0.05f)
+        //{
+        //    transform.Translate(Direction * Time.deltaTime * moveSpeed);
+        //    yield return new WaitForEndOfFrame();
+        //}
+
+        float duration = GameManager.timePerTurn;
+        float timeCount = 0f;
+        while (timeCount < duration)
         {
-            transform.Translate(Direction * Time.deltaTime * moveSpeed);
+            timeCount += Time.deltaTime;
+            transform.position = Vector3.Lerp(startPosition, newPosition, timeCount / duration);
             yield return new WaitForEndOfFrame();
         }
 

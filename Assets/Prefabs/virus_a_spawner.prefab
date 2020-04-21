@@ -92,7 +92,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 285169537
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -416920593294133355, guid: f9bddaeb62a68da46a2dc12856a22190,
     type: 3}
@@ -119,7 +119,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.005615294, y: 0}
+  m_Offset: {x: -0.0010244846, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -130,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.62938964, y: 0.86523247}
+  m_Size: {x: 0.24426699, y: 0.86523247}
   m_EdgeRadius: 0
 --- !u!50 &7110521565570506672
 Rigidbody2D:
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 1622147484545590500, guid: f9bddaeb62a68da46a2dc12856a22190, type: 3}
   virus: {fileID: 5665534183234616659, guid: a5835c7b99da37b42a44c44b96f0e4c1, type: 3}
-  turnsToWaitUntilNextSpawn: 2
+  turnsToWaitUntilNextSpawn: 7
 --- !u!114 &3965492662748037552
 MonoBehaviour:
   m_ObjectHideFlags: 0

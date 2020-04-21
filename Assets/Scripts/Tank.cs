@@ -19,7 +19,7 @@ public class Tank : MonoBehaviour
     float timeToRotationTurret = 0.25f;
 
     [SerializeField]
-    float timeToRotateBody = 0.5f;
+    float timeToRotateBody = 0.25f;
 
     [SerializeField]
     float speed = 2.0f;
@@ -42,13 +42,11 @@ public class Tank : MonoBehaviour
     Vector2 DirectionBodyIsFacing = Vector2.up;
     Vector2 DirectionTurretIsFacing = Vector2.up;
 
-    // Start is called before the first frame update
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(!isMoving && !isRotating && !hasFired)
@@ -72,14 +70,32 @@ public class Tank : MonoBehaviour
 
     private void Attack()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && hasFired == false)
         {
             gameManager.PlayerActionTaken();
-            //hasFired = true;
+            hasFired = true;
+            StartCoroutine(TimeSinceLastShotCounter());
             projectile.enabled = true;
             projectile.GetComponent<Projectile>().Direction = DirectionTurretIsFacing;
             Instantiate(projectile, transform.position + (Vector3)(DirectionTurretIsFacing / 2), Quaternion.identity, projectiles.transform);
         }
+    }
+
+    /// <summary>
+    /// Used to ensure player can't shoot more than once per turn
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator TimeSinceLastShotCounter()
+    {
+        float timeSinceLastShot = 0f;
+
+        while (timeSinceLastShot <= GameManager.timePerTurn)
+        {
+            timeSinceLastShot += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        hasFired = false;
     }
 
     private void RotateTurret()
@@ -147,11 +163,11 @@ public class Tank : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            StartCoroutine(MoveBodyCoroutine((Vector2)transform.position + DirectionBodyIsFacing, DirectionBodyIsFacing));
+            StartCoroutine(MoveBodyCoroutine(DirectionBodyIsFacing));
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            StartCoroutine(MoveBodyCoroutine((Vector2)transform.position - DirectionBodyIsFacing, -DirectionBodyIsFacing));
+            StartCoroutine(MoveBodyCoroutine(-DirectionBodyIsFacing));
         }
     }
 
@@ -167,37 +183,73 @@ public class Tank : MonoBehaviour
         }
     }
 
-    public IEnumerator MoveBodyCoroutine(Vector2 newPosition, Vector2 direction)
+    public IEnumerator MoveBodyCoroutine(Vector2 direction)
     {
         isMoving = true;
         gameManager.PlayerActionTaken();
 
         Vector2 startPosition = transform.position;
+        Vector2 newPosition = startPosition + direction;
         bool wasCollision = false;
+        float duration = GameManager.timePerTurn;
 
-        //Rotate body and turrent if needed
-        //play sound
-        while (Vector2.Distance(transform.position, newPosition) > 0.05f)
+        float timeCount = 0f;
+        while (timeCount < duration)
         {
-            wasCollision = boxCollider.IsTouchingLayers(LayerMask.GetMask("Obstacles", "Walls"));
-            Debug.Log(wasCollision);
+            wasCollision = wasCollision == true ? true : boxCollider.IsTouchingLayers(LayerMask.GetMask("Obstacles", "Walls"));
+            timeCount += Time.deltaTime;
+
             if (wasCollision == false)
             {
-                transform.Translate(direction * Time.deltaTime * speed);
-                yield return new WaitForEndOfFrame();
+                transform.position = Vector3.Lerp(startPosition, newPosition, timeCount / duration);
             }
             else
             {
                 transform.position = startPosition;
-                break;
             }
+            yield return new WaitForEndOfFrame();
         }
 
-        if(wasCollision == false)
+        if (wasCollision == false)
         {
             transform.position = newPosition;
         }
 
         isMoving = false;
     }
+
+    //public IEnumerator MoveBodyCoroutine(Vector2 newPosition, Vector2 direction)
+    //{
+    //    isMoving = true;
+    //    gameManager.PlayerActionTaken();
+
+    //    Vector2 startPosition = transform.position;
+    //    bool wasCollision = false;
+
+    //    //Rotate body and turrent if needed
+    //    //play sound
+    //    while (Vector2.Distance(transform.position, newPosition) > 0.05f)
+    //    {
+    //        wasCollision = boxCollider.IsTouchingLayers(LayerMask.GetMask("Obstacles", "Walls"));
+    //        Debug.Log(wasCollision);
+    //        if (wasCollision == false)
+    //        {
+
+    //            transform.Translate(direction * Time.deltaTime * speed);
+    //            yield return new WaitForEndOfFrame();
+    //        }
+    //        else
+    //        {
+    //            transform.position = startPosition;
+    //            break;
+    //        }
+    //    }
+
+    //    if(wasCollision == false)
+    //    {
+    //        transform.position = newPosition;
+    //    }
+
+    //    isMoving = false;
+    //}
 }

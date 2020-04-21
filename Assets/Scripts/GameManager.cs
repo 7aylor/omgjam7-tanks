@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Projectile[] projectiles;
 
+    [SerializeField]
+    public static float timePerTurn = 0.5f;
+
     VirusSpawner[] spawners;
 
     // Start is called before the first frame update
