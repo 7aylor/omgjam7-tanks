@@ -5,7 +5,7 @@ using UnityEngine;
 public class PathfindingNode
 {
     public bool isWalkable;
-    public Vector2 worldPosition;
+    public Vector3 worldPosition;
 
     public PathfindingNode(bool _isWalkable, Vector2 _worldPosition)
     {
