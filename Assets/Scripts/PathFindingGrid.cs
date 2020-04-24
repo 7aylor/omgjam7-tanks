@@ -8,6 +8,7 @@ public class PathFindingGrid : MonoBehaviour
     public LayerMask[] unwalkableLayers;
     PathfindingNode[,] grid;
     public Vector2 gridWorldSize;
+    public Transform player;
 
     int gridSizeX;
     int gridSizeY;
@@ -28,7 +29,7 @@ public class PathFindingGrid : MonoBehaviour
     private void CreateGrid()
     {
         grid = new PathfindingNode[gridSizeX, gridSizeY];
-        Vector2 worldBottomLeft = (Vector2)transform.position - Vector2.right * (gridSizeX / 2) - Vector2.up * (gridSizeY / 2);   
+        Vector2 worldBottomLeft = (Vector2)transform.position - Vector2.right * (gridWorldSize.x / 2) - Vector2.up * (gridWorldSize.y / 2);   
 
         for(int x = 0; x < gridSizeX; x++)
         {
@@ -42,15 +43,33 @@ public class PathFindingGrid : MonoBehaviour
         }
     }
 
+    public PathfindingNode GetNodeFromWorldPoint(Vector2 worldPosition)
+    {
+        float percentX = (worldPosition.x - 0.5f + (gridWorldSize.x / 2)) / gridWorldSize.x;
+        float percentY = (worldPosition.y + 0.5f + (gridWorldSize.y / 2)) / gridWorldSize.y;
+        Debug.Log(percentX + ", " +percentY);
+        percentX = Mathf.Clamp01(percentX);
+        percentY = Mathf.Clamp01(percentY);
+        Debug.Log(percentX + ", " +percentY);
+        int x = Mathf.RoundToInt((gridSizeX - 1) * percentX);
+        int y = Mathf.RoundToInt((gridSizeY - 1) * percentY);
+        return grid[x, y];
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y, 0));
 
         if(grid != null)
         {
-            foreach(var node in grid)
+            PathfindingNode playerNode = GetNodeFromWorldPoint(player.position);
+            foreach (var node in grid)
             {
                 Gizmos.color = node.isWalkable ? new Color(0,1,0,0.5f) : new Color(1, 0, 0, 0.5f);
+                if(playerNode == node)
+                {
+                    Gizmos.color = new Color(0,1,1,0.5f);
+                }
                 Gizmos.DrawCube(node.worldPosition, Vector3.one * 0.9f);
             }
         }
