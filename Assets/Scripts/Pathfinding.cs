@@ -5,17 +5,18 @@ using UnityEngine;
 public class Pathfinding : MonoBehaviour
 {
     PathFindingGrid grid;
-    public Transform seeker;
     public Transform target;
+    public List<PathfindingNode> path;
 
     private void Awake()
     {
-        grid = GetComponent<PathFindingGrid>();
+        path = new List<PathfindingNode>();
+        grid = FindObjectOfType<PathFindingGrid>();
     }
 
-    private void Update()
+    public void UpdatePath()
     {
-        FindPath(seeker.position, target.position);
+        FindPath(transform.position, target.position);
     }
 
     void FindPath(Vector2 startPosition, Vector2 targetPosition)
@@ -78,18 +79,28 @@ public class Pathfinding : MonoBehaviour
 
     void RetracePath(PathfindingNode startNode, PathfindingNode endNode)
     {
-        List<PathfindingNode> path = new List<PathfindingNode>();
+        List<PathfindingNode> newPath = new List<PathfindingNode>();
         PathfindingNode currentNode = endNode;
 
         while(currentNode != startNode)
         {
-            path.Add(currentNode);
+            newPath.Add(currentNode);
             currentNode = currentNode.parent;
+            if (!grid.paths.Contains(currentNode))
+            {
+                grid.paths.Add(currentNode);
+            }
         }
 
         path.Reverse();
 
-        grid.path = path;
+        foreach (var node in path)
+        {
+            //used to draw this path
+            
+        }
+
+        path = newPath;
     }
 
     int GetDistance(PathfindingNode nodeA, PathfindingNode nodeB)

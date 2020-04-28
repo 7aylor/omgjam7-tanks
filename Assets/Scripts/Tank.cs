@@ -32,6 +32,7 @@ public class Tank : MonoBehaviour
 
     [SerializeField]
     GameManager gameManager;
+    PathFindingGrid pathFindingGrid;
 
     BoxCollider2D boxCollider;
 
@@ -45,6 +46,7 @@ public class Tank : MonoBehaviour
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
+        pathFindingGrid = FindObjectOfType<PathFindingGrid>();
     }
 
     void Update()
@@ -216,6 +218,7 @@ public class Tank : MonoBehaviour
         }
 
         isMoving = false;
+        pathFindingGrid.UpdateAllPaths();
     }
 
     //public IEnumerator MoveBodyCoroutine(Vector2 newPosition, Vector2 direction)

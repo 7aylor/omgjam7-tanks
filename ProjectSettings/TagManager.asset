@@ -20,7 +20,7 @@ TagManager:
   - Walls
   - Spawners
   - Pathfinding
-  - 
+  - Enemies
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: Players
     uniqueID: 498362359
+    locked: 0
+  - name: Enemies
+    uniqueID: 2447730533
     locked: 0
   - name: Obstacles
     uniqueID: 3528147451

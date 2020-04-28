@@ -9,12 +9,30 @@ public class PathFindingGrid : MonoBehaviour
     PathfindingNode[,] grid;
     public Vector2 gridWorldSize;
     public Transform player;
+    public List<PathfindingNode> paths;
+    public Pathfinding[] enemyPaths;
 
     int gridSizeX;
     int gridSizeY;
 
+    private void Awake()
+    {
+        //singleton
+        var grids = FindObjectsOfType<PathFindingGrid>();
+
+        if(grids.Length > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
     private void Start()
     {
+        paths = new List<PathfindingNode>();
         foreach(var layer in unwalkableLayers)
         {
             Debug.Log(layer.ToString());
@@ -24,6 +42,17 @@ public class PathFindingGrid : MonoBehaviour
         gridSizeX = (int)gridWorldSize.x;
         gridSizeY = (int)gridWorldSize.y;
         CreateGrid();
+        UpdateAllPaths();
+    }
+
+    public void UpdateAllPaths()
+    {
+        paths.Clear();
+        enemyPaths = FindObjectsOfType<Pathfinding>();
+        foreach(var enemyPath in enemyPaths)
+        {
+            enemyPath.UpdatePath();
+        }
     }
 
     private void CreateGrid()
@@ -37,7 +66,7 @@ public class PathFindingGrid : MonoBehaviour
             {
                 Vector2 worldPoint = worldBottomLeft + (Vector2.right * (x + 0.5f)) + (Vector2.up * (y + 0.5f));
 
-                bool walkable = !Physics2D.OverlapBox(worldPoint, Vector2.one * 0.5f, 0, LayerMask.GetMask("Walls", "Obstacles", "Spawners"))? true : false;
+                bool walkable = !Physics2D.OverlapBox(worldPoint, Vector2.one * 0.5f, 0, LayerMask.GetMask("Walls", "Obstacles", "Spawners", "Enemies"))? true : false;
                 grid[x, y] = new PathfindingNode(walkable, worldPoint, x, y);
             }
         }
@@ -50,7 +79,12 @@ public class PathFindingGrid : MonoBehaviour
         {
             for (int y = -1; y <= 1; y++)
             {
-                if(x == 0 && y == 0)
+                //ignore center and corners
+                if(x == 0 && y == 0 ||
+                   x == -1 && y == -1 ||
+                   x == -1 && y == 1 ||
+                   x == 1 && y == -1 ||
+                   x == 1 && y == 1)
                 {
                     continue;
                 }
@@ -81,8 +115,6 @@ public class PathFindingGrid : MonoBehaviour
         return grid[x, y];
     }
 
-    public List<PathfindingNode> path;
-
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y, 0));
@@ -93,11 +125,11 @@ public class PathFindingGrid : MonoBehaviour
             foreach (var node in grid)
             {
                 Gizmos.color = node.isWalkable ? new Color(0,1,0,0.5f) : new Color(1, 0, 0, 0.5f);
-                if(path != null)
+                if(paths != null)
                 {
-                    if(path.Contains(node))
+                    if(paths.Contains(node))
                     {
-                        Gizmos.color = Color.black;
+                        Gizmos.color = new Color(0,0,0,0.5f);
                     }
                 }
                 if(playerNode == node)
