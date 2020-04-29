@@ -85,7 +85,7 @@ public class VirusSpawner : MonoBehaviour
                 }
                 else
                 {
-                    LayerMask layerMask = LayerMask.GetMask("Obstacles", "Walls", "Players", "Enemies", "Spawners");
+                    LayerMask layerMask = LayerMask.GetMask("Obstacles", "Walls", "Players", "Enemies");
                     RaycastHit hit;
 
                     Vector2 castOrigin = (Vector2)transform.position;

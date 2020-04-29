@@ -6950,6 +6950,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: virus_a_spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 5395702407585638849, guid: 5a0f5cc14d2992745a4fcd341fbcf53c,
+        type: 3}
+      propertyPath: turnsToWaitUntilNextSpawn
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a0f5cc14d2992745a4fcd341fbcf53c, type: 3}
 --- !u!1 &917591949
@@ -7199,6 +7204,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540407501003270458, guid: f57033a7b1ae6134a9e488b5497d9aaa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6479702627050295492, guid: f57033a7b1ae6134a9e488b5497d9aaa,
         type: 3}
@@ -8071,6 +8081,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: virus_b_spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 5395702407585638849, guid: c5129cf7bfc91884fbe9a0b6939ffb78,
+        type: 3}
+      propertyPath: turnsToWaitUntilNextSpawn
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6285277444282075389, guid: c5129cf7bfc91884fbe9a0b6939ffb78,
         type: 3}
       propertyPath: m_Offset.x
@@ -8160,6 +8175,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5665534183234616659, guid: a5835c7b99da37b42a44c44b96f0e4c1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6004678476061050293, guid: a5835c7b99da37b42a44c44b96f0e4c1,
         type: 3}
@@ -8330,6 +8350,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540407501003270458, guid: f57033a7b1ae6134a9e488b5497d9aaa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6479702627050295492, guid: f57033a7b1ae6134a9e488b5497d9aaa,
         type: 3}

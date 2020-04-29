@@ -74,6 +74,7 @@ public class Tank : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && hasFired == false)
         {
+            pathFindingGrid.UpdateAllPaths();
             gameManager.PlayerActionTaken();
             hasFired = true;
             StartCoroutine(TimeSinceLastShotCounter());

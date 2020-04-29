@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5665534183234616670}
   - component: {fileID: 4826564108674187687}
   - component: {fileID: 6004678476061050293}
+  - component: {fileID: -2575592332414190982}
   m_Layer: 15
   m_Name: virus_a
   m_TagString: Untagged
@@ -160,3 +161,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 315155629599548428, guid: f1f61d344bbf8784091f94df6800498c, type: 3}
+--- !u!114 &-2575592332414190982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5665534183234616659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 924c3843179ac3a418eb7f6eaee3605b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

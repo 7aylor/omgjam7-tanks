@@ -33,11 +33,6 @@ public class PathFindingGrid : MonoBehaviour
     private void Start()
     {
         paths = new List<PathfindingNode>();
-        foreach(var layer in unwalkableLayers)
-        {
-            Debug.Log(layer.ToString());
-            Debug.Log(layer.value);
-        }
 
         gridSizeX = (int)gridWorldSize.x;
         gridSizeY = (int)gridWorldSize.y;
@@ -106,10 +101,10 @@ public class PathFindingGrid : MonoBehaviour
     {
         float percentX = (worldPosition.x - 0.5f + (gridWorldSize.x / 2)) / gridWorldSize.x;
         float percentY = (worldPosition.y + 0.5f + (gridWorldSize.y / 2)) / gridWorldSize.y;
-        Debug.Log(percentX + ", " +percentY);
+
         percentX = Mathf.Clamp01(percentX);
         percentY = Mathf.Clamp01(percentY);
-        Debug.Log(percentX + ", " +percentY);
+
         int x = Mathf.RoundToInt((gridSizeX - 1) * percentX);
         int y = Mathf.RoundToInt((gridSizeY - 1) * percentY);
         return grid[x, y];
@@ -135,6 +130,10 @@ public class PathFindingGrid : MonoBehaviour
                 if(playerNode == node)
                 {
                     Gizmos.color = new Color(0,1,1,0.5f);
+                }
+                if(node.gridX == 0 && node.gridY == 0)
+                {
+                    Gizmos.color = Color.blue;
                 }
                 Gizmos.DrawCube(node.worldPosition, Vector3.one * 0.9f);
             }

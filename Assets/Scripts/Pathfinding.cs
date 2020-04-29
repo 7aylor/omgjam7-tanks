@@ -5,11 +5,12 @@ using UnityEngine;
 public class Pathfinding : MonoBehaviour
 {
     PathFindingGrid grid;
-    public Transform target;
     public List<PathfindingNode> path;
+    private Transform target;
 
     private void Awake()
     {
+        target = FindObjectOfType<Tank>().transform;
         path = new List<PathfindingNode>();
         grid = FindObjectOfType<PathFindingGrid>();
     }
@@ -17,6 +18,10 @@ public class Pathfinding : MonoBehaviour
     public void UpdatePath()
     {
         FindPath(transform.position, target.position);
+        //for(int i = 0; i < path.Count; i++)
+        //{
+        //    Debug.Log(name + "--" + path[i].gridX + ", " + path[i].gridY + " : " + path[i].worldPosition.x + ", " + path[i].worldPosition.y);
+        //}
     }
 
     void FindPath(Vector2 startPosition, Vector2 targetPosition)
@@ -92,14 +97,7 @@ public class Pathfinding : MonoBehaviour
             }
         }
 
-        path.Reverse();
-
-        foreach (var node in path)
-        {
-            //used to draw this path
-            
-        }
-
+        newPath.Reverse();
         path = newPath;
     }
 
