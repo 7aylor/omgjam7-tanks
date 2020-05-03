@@ -70,7 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d841ab8e80bf440b97a318ce4f6fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 1
+  damage: 1
 --- !u!50 &315155629599548433
 Rigidbody2D:
   serializedVersion: 4
@@ -189,7 +190,7 @@ SpriteRenderer:
   m_SortingLayerID: 498362359
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4881786594697243456, guid: 754613f1974b8ec4eba06e3359eb9cb2,
+  m_Sprite: {fileID: -8153908041986249161, guid: f382b1924ec254149a3318ba3ef042bb,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -230,9 +231,10 @@ GameObject:
   m_Component:
   - component: {fileID: 315155630194656961}
   - component: {fileID: 315155630194656960}
+  - component: {fileID: 1162805830}
   m_Layer: 11
   m_Name: Turret
-  m_TagString: Player
+  m_TagString: tank turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -302,6 +304,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1162805830
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315155630194657022}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 770782cceb811d042ad0d9ac3ce0543a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &315155631317794797
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,9 +333,11 @@ GameObject:
   m_Component:
   - component: {fileID: 315155631317794798}
   - component: {fileID: 315155631317794796}
+  - component: {fileID: 1173695800}
+  - component: {fileID: 1173695801}
   m_Layer: 11
   m_Name: Body
-  m_TagString: Player
+  m_TagString: tank body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -385,3 +408,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1173695800
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315155631317794797}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 270eb53fd1f06524aa5ef9127f3cc40d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1173695801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315155631317794797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65b505366baec0d44b1158bd561eb812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

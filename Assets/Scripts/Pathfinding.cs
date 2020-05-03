@@ -7,21 +7,26 @@ public class Pathfinding : MonoBehaviour
     PathFindingGrid grid;
     public List<PathfindingNode> path;
     private Transform target;
+    private Vector2 previousTargetPosition;
+    private Enemy enemy;
 
     private void Awake()
     {
         target = FindObjectOfType<Tank>().transform;
         path = new List<PathfindingNode>();
         grid = FindObjectOfType<PathFindingGrid>();
+        enemy = GetComponent<Enemy>();
+        previousTargetPosition = new Vector2(9999, 9999);
     }
 
     public void UpdatePath()
     {
-        FindPath(transform.position, target.position);
-        //for(int i = 0; i < path.Count; i++)
-        //{
-        //    Debug.Log(name + "--" + path[i].gridX + ", " + path[i].gridY + " : " + path[i].worldPosition.x + ", " + path[i].worldPosition.y);
-        //}
+        if((Vector2)transform.position != previousTargetPosition)
+        {
+            previousTargetPosition = (Vector2)transform.position;
+            FindPath(transform.position, target.position);
+            enemy.UpdateDirectionArrowPosition(path[0].worldPosition);
+        }
     }
 
     void FindPath(Vector2 startPosition, Vector2 targetPosition)

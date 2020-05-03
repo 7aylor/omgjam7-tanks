@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 1622147484545590500, guid: f9bddaeb62a68da46a2dc12856a22190, type: 3}
   virus: {fileID: 5665534183234616659, guid: a5835c7b99da37b42a44c44b96f0e4c1, type: 3}
-  turnsToWaitUntilNextSpawn: 7
+  turnsToWaitUntilNextSpawn: 12
 --- !u!114 &3965492662748037552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,3 +181,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  damage: 1

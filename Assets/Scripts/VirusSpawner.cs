@@ -18,6 +18,8 @@ public class VirusSpawner : MonoBehaviour
 
     Animator animator;
     SpriteRenderer spriteRenderer;
+    PlayerStats playerStats;
+    GameManager gameManager;
 
     bool isAlive = true;
 
@@ -27,6 +29,7 @@ public class VirusSpawner : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemiesParent = FindObjectOfType<EnemiesParent>().gameObject;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Update()
@@ -60,6 +63,8 @@ public class VirusSpawner : MonoBehaviour
         //player glass breaking sound
         spriteRenderer.sprite = sprite;
         isAlive = false;
+        gameManager.EnemyDestroyed();
+
         Destroy(animator);
     }
 
@@ -68,7 +73,8 @@ public class VirusSpawner : MonoBehaviour
         Vector3? spawnPosition = FindOpenSpawnPosition();
         if(spawnPosition != null)
         {
-            Instantiate(virus, (Vector3)spawnPosition, Quaternion.identity, enemiesParent.transform);
+            GameObject newVirus = Instantiate(virus, (Vector3)spawnPosition, Quaternion.identity, enemiesParent.transform);
+            gameManager.EnemySpawned();
         }
     }
 

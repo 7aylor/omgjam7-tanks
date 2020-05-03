@@ -110,6 +110,7 @@ public class PathFindingGrid : MonoBehaviour
         return grid[x, y];
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y, 0));
@@ -140,3 +141,4 @@ public class PathFindingGrid : MonoBehaviour
         }
     }
 }
+#endif

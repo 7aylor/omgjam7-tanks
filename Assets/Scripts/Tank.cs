@@ -33,12 +33,15 @@ public class Tank : MonoBehaviour
     [SerializeField]
     GameManager gameManager;
     PathFindingGrid pathFindingGrid;
+    Animator bodyAnimator;
+    Animator turretAnimator;
 
     BoxCollider2D boxCollider;
 
     bool isMoving = false;
     bool isRotating = false;
     bool hasFired = false;
+    bool isAlive = true;
 
     Vector2 DirectionBodyIsFacing = Vector2.up;
     Vector2 DirectionTurretIsFacing = Vector2.up;
@@ -47,18 +50,24 @@ public class Tank : MonoBehaviour
     {
         boxCollider = GetComponent<BoxCollider2D>();
         pathFindingGrid = FindObjectOfType<PathFindingGrid>();
+        bodyAnimator = body.GetComponent<Animator>();
+        turretAnimator = turret.GetComponent<Animator>();
+        body.GetComponent<TankBody>().TankHasDied += KillTank;
     }
 
     void Update()
     {
-        if(!isMoving && !isRotating && !hasFired)
+        if(isAlive)
         {
-            MoveBody();
-            RotateBody();
-            RotateTurret();
-            Attack();
+            if(!isMoving && !isRotating && !hasFired)
+            {
+                MoveBody();
+                RotateBody();
+                RotateTurret();
+                Attack();
+            }
+            EnableDirectionArrow();
         }
-        EnableDirectionArrow();
     }
 
     private void EnableDirectionArrow()
@@ -118,6 +127,11 @@ public class Tank : MonoBehaviour
     {
         isRotating = true;
 
+        if(objToRotate.tag == "tank body")
+        {
+            bodyAnimator.SetBool("Driving", true);
+        }
+
         Vector3 currentRoation = objToRotate.transform.rotation.eulerAngles;
         Vector3 newRotation = changeRotation + currentRoation;
 
@@ -138,7 +152,20 @@ public class Tank : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
+        bodyAnimator.SetBool("Driving", false);
+
         isRotating = false;
+    }
+
+    public void TriggerDeathAnimation()
+    {
+        bodyAnimator.SetTrigger("Death");
+        turretAnimator.SetTrigger("Death");
+    }
+
+    public void KillTank()
+    {
+        isAlive = false;
     }
 
     private Vector2 UpdateDirectionFacing(Vector3 newRotation)
@@ -189,6 +216,7 @@ public class Tank : MonoBehaviour
     public IEnumerator MoveBodyCoroutine(Vector2 direction)
     {
         isMoving = true;
+        bodyAnimator.SetBool("Driving", true);
         gameManager.PlayerActionTaken();
 
         Vector2 startPosition = transform.position;
@@ -219,41 +247,7 @@ public class Tank : MonoBehaviour
         }
 
         isMoving = false;
+        bodyAnimator.SetBool("Driving", false);
         pathFindingGrid.UpdateAllPaths();
     }
-
-    //public IEnumerator MoveBodyCoroutine(Vector2 newPosition, Vector2 direction)
-    //{
-    //    isMoving = true;
-    //    gameManager.PlayerActionTaken();
-
-    //    Vector2 startPosition = transform.position;
-    //    bool wasCollision = false;
-
-    //    //Rotate body and turrent if needed
-    //    //play sound
-    //    while (Vector2.Distance(transform.position, newPosition) > 0.05f)
-    //    {
-    //        wasCollision = boxCollider.IsTouchingLayers(LayerMask.GetMask("Obstacles", "Walls"));
-    //        Debug.Log(wasCollision);
-    //        if (wasCollision == false)
-    //        {
-
-    //            transform.Translate(direction * Time.deltaTime * speed);
-    //            yield return new WaitForEndOfFrame();
-    //        }
-    //        else
-    //        {
-    //            transform.position = startPosition;
-    //            break;
-    //        }
-    //    }
-
-    //    if(wasCollision == false)
-    //    {
-    //        transform.position = newPosition;
-    //    }
-
-    //    isMoving = false;
-    //}
 }

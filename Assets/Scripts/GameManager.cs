@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void TankDeathHandler();
+public delegate void ArmorDamagedHandler();
+public delegate void EnemySpawnedHandler(int amount);
+public delegate void EnemyDestroyedHandler(int amount);
+
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
@@ -15,22 +20,27 @@ public class GameManager : MonoBehaviour
 
     VirusSpawner[] spawners;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    EnemyText enemyText;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    ArmorText armorText;
+
+    public event ArmorDamagedHandler armorDamaged;
+    public event EnemyDestroyedHandler enemyDestroyed;
+    public event EnemySpawnedHandler enemySpawned;
 
     public void PlayerActionTaken()
     {
         MoveAllObjects();
         SpawnViruses();
+    }
+
+    private void Start()
+    {
+        armorDamaged += armorText.UpdateArmorText;
+        enemySpawned += enemyText.UpdateEnemyCountText;
+        enemyDestroyed += enemyText.UpdateEnemyCountText;
     }
 
     private void MoveAllObjects()
@@ -57,5 +67,23 @@ public class GameManager : MonoBehaviour
         {
             spawner.DecideToSpawnVirus();
         }
+    }
+
+    public void EnemySpawned()
+    {
+        if (enemySpawned != null)
+            enemySpawned(1);
+    }
+
+    public void EnemyDestroyed()
+    {
+        if (enemySpawned != null)
+            enemySpawned(-1);
+    }
+
+    public void ArmorDamaged()
+    {
+        if (armorDamaged != null)
+            armorDamaged();
     }
 }
