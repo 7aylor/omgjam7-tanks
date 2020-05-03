@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayerActionTaken()
     {
+        FindObjectOfType<PathFindingGrid>().CreateGrid();
         MoveAllObjects();
         SpawnViruses();
     }

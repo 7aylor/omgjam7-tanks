@@ -16,7 +16,10 @@ public class Portal : MonoBehaviour
 
     private void OnEnable()
     {
-        messageText.DisplayMessage("A portal has appeared to the next level");
+        if(messageText.enabled)
+        {
+            messageText.DisplayMessage("A portal has appeared to the next level");
+        }
     }
 
     public void EnablePortal()

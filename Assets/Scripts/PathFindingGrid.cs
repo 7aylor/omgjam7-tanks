@@ -44,24 +44,24 @@ public class PathFindingGrid : MonoBehaviour
     {
         paths.Clear();
         enemyPaths = FindObjectsOfType<Pathfinding>();
-        foreach(var enemyPath in enemyPaths)
+        foreach (var enemyPath in enemyPaths)
         {
             enemyPath.UpdatePath();
         }
     }
 
-    private void CreateGrid()
+    public void CreateGrid()
     {
         grid = new PathfindingNode[gridSizeX, gridSizeY];
-        Vector2 worldBottomLeft = (Vector2)transform.position - Vector2.right * (gridWorldSize.x / 2) - Vector2.up * (gridWorldSize.y / 2);   
+        Vector2 worldBottomLeft = (Vector2)transform.position - Vector2.right * (gridWorldSize.x / 2) - Vector2.up * (gridWorldSize.y / 2);
 
-        for(int x = 0; x < gridSizeX; x++)
+        for (int x = 0; x < gridSizeX; x++)
         {
-            for(int y = 0; y < gridSizeY; y++)
+            for (int y = 0; y < gridSizeY; y++)
             {
                 Vector2 worldPoint = worldBottomLeft + (Vector2.right * (x + 0.5f)) + (Vector2.up * (y + 0.5f));
 
-                bool walkable = !Physics2D.OverlapBox(worldPoint, Vector2.one * 0.5f, 0, LayerMask.GetMask("Walls", "Obstacles", "Spawners", "Enemies"))? true : false;
+                bool walkable = !Physics2D.OverlapBox(worldPoint, Vector2.one * 0.5f, 0, LayerMask.GetMask("Walls", "Obstacles", "Spawners", "Enemies")) ? true : false;
                 grid[x, y] = new PathfindingNode(walkable, worldPoint, x, y);
             }
         }
@@ -70,12 +70,12 @@ public class PathFindingGrid : MonoBehaviour
     public List<PathfindingNode> GetNeighbors(PathfindingNode node)
     {
         List<PathfindingNode> neighbors = new List<PathfindingNode>();
-        for(int x = -1; x <= 1; x++)
+        for (int x = -1; x <= 1; x++)
         {
             for (int y = -1; y <= 1; y++)
             {
                 //ignore center and corners
-                if(x == 0 && y == 0 ||
+                if (x == 0 && y == 0 ||
                    x == -1 && y == -1 ||
                    x == -1 && y == 1 ||
                    x == 1 && y == -1 ||
@@ -87,7 +87,7 @@ public class PathFindingGrid : MonoBehaviour
                 int checkX = node.gridX + x;
                 int checkY = node.gridY + y;
 
-                if(checkX >= 0 && checkX < gridSizeX && checkY >= 0 && checkY < gridSizeY)
+                if (checkX >= 0 && checkX < gridSizeX && checkY >= 0 && checkY < gridSizeY)
                 {
                     neighbors.Add(grid[checkX, checkY]);
                 }
@@ -115,24 +115,24 @@ public class PathFindingGrid : MonoBehaviour
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y, 0));
 
-        if(grid != null)
+        if (grid != null)
         {
             PathfindingNode playerNode = GetNodeFromWorldPoint(player.position);
             foreach (var node in grid)
             {
-                Gizmos.color = node.isWalkable ? new Color(0,1,0,0.5f) : new Color(1, 0, 0, 0.5f);
-                if(paths != null)
+                Gizmos.color = node.isWalkable ? new Color(0, 1, 0, 0.5f) : new Color(1, 0, 0, 0.5f);
+                if (paths != null)
                 {
-                    if(paths.Contains(node))
+                    if (paths.Contains(node))
                     {
-                        Gizmos.color = new Color(0,0,0,0.5f);
+                        Gizmos.color = new Color(0, 0, 0, 0.5f);
                     }
                 }
-                if(playerNode == node)
+                if (playerNode == node)
                 {
-                    Gizmos.color = new Color(0,1,1,0.5f);
+                    Gizmos.color = new Color(0, 1, 1, 0.5f);
                 }
-                if(node.gridX == 0 && node.gridY == 0)
+                if (node.gridX == 0 && node.gridY == 0)
                 {
                     Gizmos.color = Color.blue;
                 }
@@ -140,5 +140,5 @@ public class PathFindingGrid : MonoBehaviour
             }
         }
     }
-}
 #endif
+}
