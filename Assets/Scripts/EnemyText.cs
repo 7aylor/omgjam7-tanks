@@ -12,14 +12,14 @@ public class EnemyText : MonoBehaviour
     void Start()
     {
         text = GetComponent<TextMeshProUGUI>();
-        numEnemies = FindObjectsOfType<Enemy>().Length + FindObjectsOfType<VirusSpawner>().Length;
+        numEnemies = FindObjectsOfType<Enemy>().Length;
         UpdateEnemyCountText(0);
     }
 
     public void UpdateEnemyCountText(int amount)
     {
-        Debug.Log("Updating enemy count");
         numEnemies += amount;
+        Debug.Log("Updating enemy count to " + numEnemies);
         text.text = numEnemies.ToString();
     }
 }

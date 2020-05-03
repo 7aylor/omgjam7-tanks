@@ -23,7 +23,7 @@ TagManager:
   - Spawners
   - Pathfinding
   - Enemies
-  - 
+  - Portal
   - 
   - 
   - 
@@ -48,6 +48,9 @@ TagManager:
     locked: 0
   - name: Spawner
     uniqueID: 285169537
+    locked: 0
+  - name: Portal
+    uniqueID: 2638192657
     locked: 0
   - name: Players
     uniqueID: 498362359

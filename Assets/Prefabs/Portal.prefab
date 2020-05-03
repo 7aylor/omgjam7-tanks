@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 535043746070279069}
   - component: {fileID: 535043746070279065}
   - component: {fileID: 535043746070279064}
+  - component: {fileID: -707001513199197082}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -89,8 +90,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1656774639
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 2189510010676529607, guid: 7a7edc035f217284992612ec3c72aa32,
     type: 3}
@@ -151,3 +152,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-707001513199197082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535043746070279068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90eb86f7bcbb61d468686c9bf9f7dc4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

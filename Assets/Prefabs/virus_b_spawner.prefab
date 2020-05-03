@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: -3619362111235187553, guid: 69d49b06bd8c6bb4eaf6efa3534d161d, type: 3}
+  deadSpawner: {fileID: 5269756292178529217, guid: 8ef2445c687cb8b469247c3ce0cf535e,
+    type: 3}
   virus: {fileID: 2540407501003270458, guid: f57033a7b1ae6134a9e488b5497d9aaa, type: 3}
   turnsToWaitUntilNextSpawn: 15
 --- !u!114 &-2779938733622439655

@@ -15,20 +15,20 @@ public class PathFindingGrid : MonoBehaviour
     int gridSizeX;
     int gridSizeY;
 
-    private void Awake()
-    {
-        //singleton
-        var grids = FindObjectsOfType<PathFindingGrid>();
+    //private void Awake()
+    //{
+    //    //singleton
+    //    var grids = FindObjectsOfType<PathFindingGrid>();
 
-        if(grids.Length > 1)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-    }
+    //    if(grids.Length > 1)
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //    else
+    //    {
+    //        DontDestroyOnLoad(gameObject);
+    //    }
+    //}
 
     private void Start()
     {

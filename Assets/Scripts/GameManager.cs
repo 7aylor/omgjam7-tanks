@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public delegate void TankDeathHandler();
 public delegate void ArmorDamagedHandler();
@@ -20,27 +21,25 @@ public class GameManager : MonoBehaviour
 
     VirusSpawner[] spawners;
 
-    [SerializeField]
-    EnemyText enemyText;
+    private void Awake()
+    {
+        //singleton
+        var gameManagers = FindObjectsOfType<GameManager>();
 
-    [SerializeField]
-    ArmorText armorText;
-
-    public event ArmorDamagedHandler armorDamaged;
-    public event EnemyDestroyedHandler enemyDestroyed;
-    public event EnemySpawnedHandler enemySpawned;
+        if (gameManagers.Length > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     public void PlayerActionTaken()
     {
         MoveAllObjects();
         SpawnViruses();
-    }
-
-    private void Start()
-    {
-        armorDamaged += armorText.UpdateArmorText;
-        enemySpawned += enemyText.UpdateEnemyCountText;
-        enemyDestroyed += enemyText.UpdateEnemyCountText;
     }
 
     private void MoveAllObjects()
@@ -69,21 +68,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void EnemySpawned()
+    public void LoadNextScene()
     {
-        if (enemySpawned != null)
-            enemySpawned(1);
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        if(currentScene + 1 <= SceneManager.sceneCountInBuildSettings)
+            SceneManager.LoadScene(currentScene + 1);
     }
 
-    public void EnemyDestroyed()
+    public void ReloadCurrentScene()
     {
-        if (enemySpawned != null)
-            enemySpawned(-1);
-    }
-
-    public void ArmorDamaged()
-    {
-        if (armorDamaged != null)
-            armorDamaged();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

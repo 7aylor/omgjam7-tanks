@@ -7,13 +7,16 @@ public class PlayerStats : MonoBehaviour
     public int health = 3;
 
     public int damage = 1;
+    public bool hasDied = false;
     Animator animator;
-    GameManager gameManager;
+    EnemyText enemyText;
+    ArmorText armorText;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        gameManager = FindObjectOfType<GameManager>();
+        enemyText = FindObjectOfType<EnemyText>();
+        armorText = FindObjectOfType<ArmorText>();
     }
 
     /// <summary>
@@ -23,22 +26,28 @@ public class PlayerStats : MonoBehaviour
     public void DamagePlayer(int damage)
     {
         health -= damage;
-        if (health <= 0)
+        if (health <= 0 && !hasDied)
         {
+            hasDied = true;
+            var spawner = GetComponent<VirusSpawner>();
             if (gameObject.tag == "Player")
             {
                 FindObjectOfType<Tank>().TriggerDeathAnimation();
             }
+            else if (spawner == null)
+            {
+                enemyText.UpdateEnemyCountText(-1);
+                animator.SetTrigger("Death");
+            }
             else
             {
-                gameManager.EnemyDestroyed();
-                animator.SetTrigger("Death");
+                spawner.DestroyVirusSpawner();
             }
         }
 
         if (gameObject.tag == "Player")
         {
-            gameManager.ArmorDamaged();
+            armorText.UpdateArmorText();
         }
     }
 
