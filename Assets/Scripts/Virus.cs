@@ -24,8 +24,9 @@ public class Virus : MonoBehaviour
             //kill this virus
             PlayerStats virusStats = GetComponent<PlayerStats>();
             virusStats.DamagePlayer(int.MaxValue);
+
             //damage player
-            tank.GetComponent<PlayerStats>().DamagePlayer(virusStats.damage);
+            EventBroker.InvokePlayerDamaged(virusStats.damage);
         }
     }
 }

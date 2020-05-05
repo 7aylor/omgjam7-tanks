@@ -11,6 +11,10 @@ public class Tank : MonoBehaviour
     [SerializeField]
     GameObject turret;
 
+    public int health = 3;
+
+    public int damage = 1;
+
     [SerializeField]
     GameObject arrow;
     bool arrowActive = false;
@@ -53,6 +57,7 @@ public class Tank : MonoBehaviour
         bodyAnimator = body.GetComponent<Animator>();
         turretAnimator = turret.GetComponent<Animator>();
         body.GetComponent<TankBody>().TankHasDied += KillTank;
+        EventBroker.PlayerDamaged += DamagePlayer;
     }
 
     void Update()
@@ -249,5 +254,16 @@ public class Tank : MonoBehaviour
         isMoving = false;
         bodyAnimator.SetBool("Driving", false);
         pathFindingGrid.UpdateAllPaths();
+    }
+
+    public void DamagePlayer(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0 && isAlive)
+        {
+            TriggerDeathAnimation();
+            isAlive = false;
+        }
     }
 }

@@ -30,11 +30,8 @@ public class PlayerStats : MonoBehaviour
         {
             hasDied = true;
             var spawner = GetComponent<VirusSpawner>();
-            if (gameObject.tag == "Player")
-            {
-                FindObjectOfType<Tank>().TriggerDeathAnimation();
-            }
-            else if (spawner == null)
+
+            if (spawner == null)
             {
                 enemyText.UpdateEnemyCountText(-1);
                 animator.SetTrigger("Death");
@@ -43,11 +40,6 @@ public class PlayerStats : MonoBehaviour
             {
                 spawner.DestroyVirusSpawner();
             }
-        }
-
-        if (gameObject.tag == "Player")
-        {
-            armorText.UpdateArmorText();
         }
     }
 

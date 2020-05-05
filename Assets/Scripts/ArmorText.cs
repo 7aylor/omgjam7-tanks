@@ -6,17 +6,19 @@ using TMPro;
 public class ArmorText : MonoBehaviour
 {
     TextMeshProUGUI text;
-    PlayerStats player;
+    int health;
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<Tank>().GetComponent<PlayerStats>();
+        health = FindObjectOfType<Tank>().health;
+        EventBroker.PlayerDamaged += UpdateArmorText;
         text = GetComponent<TextMeshProUGUI>();
-        UpdateArmorText();
+        UpdateArmorText(0);
     }
 
-    public void UpdateArmorText()
+    public void UpdateArmorText(int dmg)
     {
-        text.text = player.health.ToString();
+        health -= dmg;
+        text.text = health.ToString();
     }
 }

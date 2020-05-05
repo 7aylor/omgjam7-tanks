@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 315155629599548428}
   - component: {fileID: 315155629599548429}
-  - component: {fileID: 315155629599548431}
   - component: {fileID: 315155629599548433}
   - component: {fileID: 315155629599548430}
   m_Layer: 11
@@ -50,6 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 315155631317794797}
   turret: {fileID: 315155630194657022}
+  health: 10
+  damage: 1
   arrow: {fileID: 315155630136896846}
   timeToRotationTurret: 0.25
   timeToRotateBody: 0.5
@@ -58,20 +59,6 @@ MonoBehaviour:
   projectile: {fileID: -3176079599831501929, guid: e6432ef0d3f6c1642aeba1001c9fa5bf,
     type: 3}
   gameManager: {fileID: 0}
---- !u!114 &315155629599548431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 315155629599548426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29d841ab8e80bf440b97a318ce4f6fde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  damage: 1
 --- !u!50 &315155629599548433
 Rigidbody2D:
   serializedVersion: 4
@@ -188,7 +175,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 498362359
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -8153908041986249161, guid: f382b1924ec254149a3318ba3ef042bb,
     type: 3}
@@ -290,7 +277,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 498362359
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -5423691617833806011, guid: 754613f1974b8ec4eba06e3359eb9cb2,
     type: 3}
@@ -394,7 +381,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 498362359
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 4326872430171513394, guid: 754613f1974b8ec4eba06e3359eb9cb2,
     type: 3}
