@@ -33,7 +33,8 @@ public class PlayerStats : MonoBehaviour
 
             if (spawner == null)
             {
-                enemyText.UpdateEnemyCountText(-1);
+                //enemyText.UpdateEnemyCountText(-1);
+                EventBroker.InvokeEnemiesChanged(-1);
                 animator.SetTrigger("Death");
             }
             else

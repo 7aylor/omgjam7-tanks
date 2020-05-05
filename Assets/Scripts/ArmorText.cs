@@ -16,9 +16,9 @@ public class ArmorText : MonoBehaviour
         UpdateArmorText(0);
     }
 
-    public void UpdateArmorText(int dmg)
+    public void UpdateArmorText(int damage)
     {
-        health -= dmg;
+        health -= damage;
         text.text = health.ToString();
     }
 }

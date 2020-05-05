@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public delegate void TankDeathHandler();
-public delegate void ArmorDamagedHandler();
-public delegate void EnemySpawnedHandler(int amount);
-public delegate void EnemyDestroyedHandler(int amount);
 
 public class GameManager : MonoBehaviour
 {

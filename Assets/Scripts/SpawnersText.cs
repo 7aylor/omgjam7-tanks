@@ -15,6 +15,7 @@ public class SpawnersText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EventBroker.SpawnersChanged += UpdateSpawnersCountText;
         text = GetComponent<TextMeshProUGUI>();
         numSpawners = FindObjectsOfType<VirusSpawner>().Length;
         portal = FindObjectOfType<Portal>();

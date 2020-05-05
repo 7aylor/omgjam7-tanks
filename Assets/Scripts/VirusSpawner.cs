@@ -23,9 +23,6 @@ public class VirusSpawner : MonoBehaviour
     SpriteRenderer spriteRenderer;
     PlayerStats playerStats;
 
-    EnemyText enemyText;
-    SpawnersText spawnersText;
-
     bool isAlive = true;
 
     // Start is called before the first frame update
@@ -34,8 +31,6 @@ public class VirusSpawner : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemiesParent = FindObjectOfType<EnemiesParent>().gameObject;
-        enemyText = FindObjectOfType<EnemyText>();
-        spawnersText = FindObjectOfType<SpawnersText>();
     }
 
     private void Update()
@@ -67,9 +62,9 @@ public class VirusSpawner : MonoBehaviour
     public void DestroyVirusSpawner()
     {
         //player glass breaking sound
+        EventBroker.InvokeSpawnersChanged(-1);
         spriteRenderer.sprite = sprite;
         isAlive = false;
-        spawnersText.UpdateSpawnersCountText(-1);
         GameObject newVirus = Instantiate(deadSpawner, (Vector3)transform.position, Quaternion.identity, enemiesParent.transform);
         Destroy(gameObject);
     }
@@ -80,7 +75,7 @@ public class VirusSpawner : MonoBehaviour
         if(spawnPosition != null)
         {
             GameObject newVirus = Instantiate(virus, (Vector3)spawnPosition, Quaternion.identity, enemiesParent.transform);
-            enemyText.UpdateEnemyCountText(1);
+            EventBroker.InvokeEnemiesChanged(1);
         }
     }
 

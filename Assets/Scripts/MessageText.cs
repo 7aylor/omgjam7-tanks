@@ -12,6 +12,7 @@ public class MessageText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EventBroker.DisplayMessage += DisplayMessage;
         text = GetComponent<TextMeshProUGUI>();
         text.text = "";
     }

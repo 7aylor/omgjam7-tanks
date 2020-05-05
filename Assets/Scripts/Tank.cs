@@ -262,8 +262,9 @@ public class Tank : MonoBehaviour
 
         if (health <= 0 && isAlive)
         {
+            StopAllCoroutines();
             TriggerDeathAnimation();
-            isAlive = false;
+            KillTank();
         }
     }
 }
